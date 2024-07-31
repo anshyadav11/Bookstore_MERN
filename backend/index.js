@@ -1,6 +1,6 @@
 import express, { response } from "express";
-import { port } from "./config.js";
-
+import { port ,mongodburl} from "./config.js";
+import mongoose from "mongoose";
 
 
 const app=express();
@@ -11,3 +11,7 @@ app.get("/",(req,res)=>{
 app.listen(port,() => {
   console.log('app is listening to the port: '+port);
 })
+
+mongoose.connect(mongodburl)
+.then(() => {console.log(" Mongodb is connected")})
+.catch((err) => {console.log("error")});
